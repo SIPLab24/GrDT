@@ -110,24 +110,92 @@ GNNDeepfakeClassification/
 
 ## ⚡ Usage
 
-### Training 🏋️
-Train the GrDT Network on your dataset:
+Here’s the **Training** section of the README for the `GrDT-Network-Architecture` project, based on the provided directory structure:
+
+---
+
+## 🚀 Training
+
+The GrDT Network combines **Facial Representation Texture (FRT)** and **Geometric Representation Distribution (GRD)** paths to train a robust classification model. Follow the steps below to train the network:
+
+---
+
+### Prerequisites
+
+1. Ensure that all dependencies are installed:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Prepare your dataset:
+   - Place input data (e.g., images) in the `GNNDeepfakeClassification/data/` directory.
+   - Organize data into appropriate training and testing splits (e.g., `train/` and `test/` subdirectories).
+
+---
+
+### Training the Model
+
+1. Train the **Facial Representation Texture (FRT)** path:
+   ```bash
+   python FacialRepresentationTexture/src.py
+   ```
+   This will:
+   - Perform keypoint detection using `keypoint_detection.py`.
+   - Generate and smooth ROI masks via `mask_generation.py`.
+   - Extract texture features using `texture_extraction.py`.
+   - Train the texture classifier using the extracted features.
+
+2. Train the **Geometric Representation Distribution (GRD)** path:
+   ```bash
+   python GNNDeepfakeClassification/train.py
+   ```
+   This will:
+   - Process the images with a CNN to extract geometric features.
+   - Construct adjacency matrices and apply self-attention with `GRD.py`.
+   - Train the geometric classifier.
+
+3. Combine and train both paths with **Adaptive Weight Fusion**:
+   ```bash
+   python GNNDeepfakeClassification/main.py
+   ```
+   This will:
+   - Fuse the outputs of the FRT and GRD classifiers.
+   - Optimize the adaptive weights for robust classification.
+
+---
+
+### Configuration
+
+Modify the training configurations as needed:
+- **FRT Path**:
+  - Edit the parameters in `FacialRepresentationTexture/src.py` (e.g., number of keypoints, GLCM settings).
+- **GRD Path**:
+  - Adjust hyperparameters in `GNNDeepfakeClassification/train.py` (e.g., learning rate, batch size).
+- **Fusion**:
+  - Update fusion weights and loss function parameters in `GNNDeepfakeClassification/main.py`.
+
+---
+
+### Output
+
+- The trained models will be saved in the `GNNDeepfakeClassification/lib/` directory.
+- Logs and metrics (e.g., accuracy, loss) will be saved in the `data/output/` directory.
+
+---
+
+### Example Commands
+
+To train both paths and perform fusion in sequence:
 ```bash
-python train.py
+# Train FRT path
+python FacialRepresentationTexture/src.py
+
+# Train GRD path
+python GNNDeepfakeClassification/train.py
+
+# Perform adaptive weight fusion
+python GNNDeepfakeClassification/main.py
 ```
-**Optional**: Customize paths and hyperparameters in the script.
-
----
-
-
----
-
-## 🧩 Example Workflow
-
-1. **Input an image**: Add your input image to `data/sample_data/`.
-2. **Training**: Train the FRT and GRD paths using `src/train.py`.
-3. **Adaptive Fusion**: Combine the predictions using the fusion module during training or inference.
-4. **Output**: Check results in `data/output/`.
 
 ---
 
