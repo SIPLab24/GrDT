@@ -1,7 +1,3 @@
-Below is the full **GitHub README** for your GrDT Network Architecture project, written in markdown format.
-
----
-
 # GrDT Network Architecture
 
 GrDT (Geometric Representation and Facial Texture) Network is a multi-path classification framework that integrates **Facial Representation Texture (FRT)** and **Geometric Representation Distribution (GRD)** through **Adaptive Weight Fusion**. It is designed for robust classification in scenarios where input data may contain varying levels of quality, occlusions, or missing information, such as in deepfake detection or facial analysis tasks.
@@ -28,11 +24,7 @@ GrDT (Geometric Representation and Facial Texture) Network is a multi-path class
 ### 3. **Adaptive Weight Fusion**
 - Combines predictions from FRT and GRD paths using adaptive weights.
 - Mitigates the impact of incomplete or noisy data by dynamically optimizing the weight of each path.
-- Computes the final classification result:
-  \[
-  T_\text{totall} = \omega_1 T_\text{texture} + \omega_2 T_\text{geometric}
-  \]
-
+- Computes the final classification result
 ---
 
 ## Architecture Workflow
@@ -46,7 +38,7 @@ GrDT (Geometric Representation and Facial Texture) Network is a multi-path class
    - Process the image with a CNN.
    - Apply self-attention and classify using the geometric classifier.
 5. **Adaptive Weight Fusion**:
-   - Dynamically combine \( T_\text{texture} \) and \( T_\text{geometric} \) for final output.
+   - Dynamically combine for final output.
 
 ---
 
@@ -138,10 +130,6 @@ This will output the predicted class and save intermediate results in the `data/
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
-## Contact
-
-For questions or collaborations, please contact [Your Name](mailto:youremail@example.com).
 
 --- 
 
