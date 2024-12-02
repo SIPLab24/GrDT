@@ -43,7 +43,7 @@ GrDT (**Geometric Representation and Facial Texture**) Network is a multi-path c
    - Process the image with a CNN.
    - Apply self-attention and classify using the geometric classifier.
 5. **Adaptive Weight Fusion**:
-   - Dynamically combine \( T_\text{texture} \) and \( T_\text{geometric} \) for final output.
+   - Dynamically combine for final output.
 
 ---
 
@@ -73,23 +73,37 @@ GrDT (**Geometric Representation and Facial Texture**) Network is a multi-path c
 
 ```
 GrDT-Network-Architecture/
-├── README.md                    # Project documentation
-├── requirements.txt             # Required dependencies
-├── FRT/
-│   ├── main.py                  # Main script for training and inference
-│   ├── weight_fusion.py         # Adaptive weight fusion implementation
-│   ├── texture_classifier.py    # Texture-based classifier
-│   ├── geometric_classifier.py  # Geometric-based classifier
-│   ├── loss.py                  # Cross-entropy loss calculation
-│   ├── train.py                 # Training pipeline
-│   ├── inference.py             # Inference pipeline
-├── GNN/
-│   ├── sample_data/             # Input example data
-│   ├── models/                  # Folder for pre-trained models
-│   ├── output/                  # Folder for saving output results
-└── tests/
-    ├── test_fusion.py           # Test adaptive weight fusion
-    ├── test_classifiers.py      # Test classifiers
+FacialRepresentationTexture/
+├── tests/
+│   ├── test_keypoint_detection.py   # Unit test for keypoint detection
+│   ├── test_mask_generation.py      # Unit test for mask generation and smoothing
+│   ├── test_texture_extraction.py   # Unit test for texture feature extraction
+├── utils/
+│   ├── gaussian_filter.py           # Gaussian filter implementation
+│   ├── glcm.py                      # GLCM computation for texture analysis
+│   ├── metrics.py                   # Metrics for contrast, entropy, etc.
+│   ├── visualization.py             # Tools for visualizing keypoints, masks, features
+├── feature_classification.py        # Classification model for texture features
+├── keypoint_detection.py            # Facial keypoint detection algorithm
+├── mask_generation.py               # ROI mask creation and smoothing
+├── texture_extraction.py            # Texture feature extraction logic
+├── src.py                           # Main script for combining modules
+
+GNNDeepfakeClassification/
+├── data/                            # Directory for input data
+├── lib/
+│   ├── GRD.py                       # Geometric representation distribution logic
+│   ├── util.py                      # Helper functions for GRD path
+│   ├── mlp_dropout.py               # Multi-layer perceptron with dropout
+│   ├── run_GRD.sh                   # Shell script for running GRD tasks
+├── LICENSE                          # Project license
+├── main.py                          # Main script for integrating FRT and GRD paths
+├── README.md                        # Documentation and instructions
+├── requirements.txt                 # Python dependencies
+├── geometric_classifier.py          # Classification model for geometric features
+├── texture_classifier.py            # Classification model for texture features
+├── train.py                         # Training pipeline for FRT and GRD models
+
 ```
 
 ---
