@@ -1,33 +1,38 @@
-# GrDT Network Architecture
+# 🌟 GrDT Network Architecture 🌟
 
-GrDT (Geometric Representation and Facial Texture) Network is a multi-path classification framework that integrates **Facial Representation Texture (FRT)** and **Geometric Representation Distribution (GRD)** through **Adaptive Weight Fusion**. It is designed for robust classification in scenarios where input data may contain varying levels of quality, occlusions, or missing information, such as in deepfake detection or facial analysis tasks.
+GrDT (**Geometric Representation and Facial Texture**) Network is a multi-path classification framework that integrates **Facial Representation Texture (FRT)** and **Geometric Representation Distribution (GRD)** through **Adaptive Weight Fusion**. It is designed for robust classification in scenarios where input data may contain varying levels of quality, occlusions, or missing information, such as in deepfake detection or facial analysis tasks.
 
 ---
 
-## Key Features
+## 🚀 Key Features
 
-### 1. **Facial Representation Texture (FRT) Path**
+### 1. **Facial Representation Texture (FRT) Path** 🖼️
 - Extracts features from masked textures using the **Grey Level Co-occurrence Matrix (GLCM)**.
 - Captures texture properties like:
-  - **Contrast**
-  - **Entropy**
-  - **Homogeneity**
-  - **Energy**
+  - 🎨 **Contrast**
+  - 🧩 **Entropy**
+  - 🧾 **Homogeneity**
+  - ⚡ **Energy**
 - Classifies the extracted texture features using a texture classifier.
 
-### 2. **Geometric Representation Distribution (GRD) Path**
-- Processes input images using a CNN-based architecture to extract geometric features.
+---
+
+### 2. **Geometric Representation Distribution (GRD) Path** 🧬
+- Processes input images using a **CNN-based architecture** to extract geometric features.
 - Constructs an **Adjacency Matrix** for feature points.
 - Utilizes **Self-Attention** to enhance feature relationships.
 - Outputs classification results from the geometric classifier.
 
-### 3. **Adaptive Weight Fusion**
-- Combines predictions from FRT and GRD paths using adaptive weights.
-- Mitigates the impact of incomplete or noisy data by dynamically optimizing the weight of each path.
-- Computes the final classification result
 ---
 
-## Architecture Workflow
+### 3. **Adaptive Weight Fusion** ⚖️
+- Combines predictions from FRT and GRD paths using **adaptive weights**.
+- Mitigates the impact of incomplete or noisy data by dynamically optimizing the weight of each path.
+- Computes the final classification result.
+
+---
+
+## 📜 Architecture Workflow
 
 1. **Input**: A base image \( I \).
 2. **Landmark Detection**: Extract facial key points for masking.
@@ -38,16 +43,16 @@ GrDT (Geometric Representation and Facial Texture) Network is a multi-path class
    - Process the image with a CNN.
    - Apply self-attention and classify using the geometric classifier.
 5. **Adaptive Weight Fusion**:
-   - Dynamically combine for final output.
+   - Dynamically combine \( T_\text{texture} \) and \( T_\text{geometric} \) for final output.
 
 ---
 
-## Installation
+## 🛠️ Installation
 
 ### Prerequisites
-- Python >= 3.7
-- PyTorch >= 1.10
-- OpenCV >= 4.5
+- 🐍 Python >= 3.7
+- 🔥 PyTorch >= 1.10
+- 🎥 OpenCV >= 4.5
 
 ### Steps
 
@@ -64,13 +69,13 @@ GrDT (Geometric Representation and Facial Texture) Network is a multi-path class
 
 ---
 
-## Directory Structure
+## 📂 Directory Structure
 
 ```
 GrDT-Network-Architecture/
 ├── README.md                    # Project documentation
 ├── requirements.txt             # Required dependencies
-├── src/
+├── FRT/
 │   ├── main.py                  # Main script for training and inference
 │   ├── weight_fusion.py         # Adaptive weight fusion implementation
 │   ├── texture_classifier.py    # Texture-based classifier
@@ -78,7 +83,7 @@ GrDT-Network-Architecture/
 │   ├── loss.py                  # Cross-entropy loss calculation
 │   ├── train.py                 # Training pipeline
 │   ├── inference.py             # Inference pipeline
-├── data/
+├── GNN/
 │   ├── sample_data/             # Input example data
 │   ├── models/                  # Folder for pre-trained models
 │   ├── output/                  # Folder for saving output results
@@ -89,27 +94,21 @@ GrDT-Network-Architecture/
 
 ---
 
-## Usage
+## ⚡ Usage
 
-### Training
-
+### Training 🏋️
 Train the GrDT Network on your dataset:
 ```bash
-python src/train.py
+python train.py
 ```
 **Optional**: Customize paths and hyperparameters in the script.
 
-### Inference
+---
 
-Run inference on new images:
-```bash
-python src/inference.py
-```
-This will output the predicted class and save intermediate results in the `data/output/` directory.
 
 ---
 
-## Example Workflow
+## 🧩 Example Workflow
 
 1. **Input an image**: Add your input image to `data/sample_data/`.
 2. **Training**: Train the FRT and GRD paths using `src/train.py`.
@@ -118,19 +117,17 @@ This will output the predicted class and save intermediate results in the `data/
 
 ---
 
-## Future Work
+## 📈 Future Work
 - Add support for additional feature extraction paths.
 - Explore alternative weighting mechanisms, such as attention-based fusion.
 - Integrate larger datasets for enhanced robustness.
 
 ---
 
-## License
+## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
---- 
-
-Feel free to modify and customize this README as needed to better suit your project.
+### 🌟 If you find this project helpful, give it a ⭐ on GitHub! 🌟
